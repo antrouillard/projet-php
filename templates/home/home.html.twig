@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+    <section class="hero">
+        <h1>Bienvenue sur notre plateforme de tournois étudiants</h1>
+        <p>Participez aux tournois les plus passionnants et rencontrez d'autres étudiants passionnés!</p>
+        <!-- Ajoutez d'autres éléments du héros ici -->
+    </section>
+
+    <section class="recent-tournaments">
+        <div class="groupHeader">
+            <h2>Tournois récemment créés</h2>
+        </div>
+
+        <div class="tournament-group">
+        {% for img in imgTab %}
+            <div class="tournament">
+                <img src="{{img}}" alt="Tournoi 1">
+                <!-- Ajoutez d'autres détails du tournoi ici -->
+            </div>
+        {% endfor %}
+            <!-- Ajoutez plus d'éléments de tournoi si nécessaire -->
+        </div>
+    </section>
+{% endblock %}
+
+
+
+
+

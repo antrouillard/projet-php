@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recherche de Tournois{% endblock %}
+
+{% block body %}
+    <section class="search-container">
+        <header class="search-header">
+            <h1>Recherche de Tournois</h1>
+            <p>Utilisez les filtres ci-dessous pour trouver le tournoi qui vous convient.</p>
+        </header>
+
+        <div class="search-filters">
+            <form action="/search" method="get">
+                <label for="search">Recherche:</label>
+                <input type="text" id="search" name="search" placeholder="Entrez votre recherche">
+
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date">
+
+                <label for="location">Lieu:</label>
+                <input type="text" id="location" name="location" placeholder="Entrez le lieu">
+
+                <button type="submit">Rechercher</button>
+            </form>
+        </div>
+
+        <div class="search-results">
+            <h2>Résultats de la Recherche</h2>
+            <ul>
+                {% for tournament in searchResults %}
+                    <li>
+                        <h3>{{ tournament.name }}</h3>
+                        <p>Date: {{ tournament.date }}</p>
+                        <p>Lieu: {{ tournament.location }}</p>
+                        <!-- Ajoutez d'autres détails du tournoi si nécessaire -->
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+{% endblock %}
+
+
+
+

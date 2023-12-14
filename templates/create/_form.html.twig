@@ -1,0 +1,75 @@
+<form method="post">
+    <div class="mb-3">
+        <label for="inputName" class="form-label">Tournament Name</label>
+        <input type="text" id="inputName" name="tournamentName" placeholder="Sample : Super Tournament #2" required class="form-control {{ violations.name is not defined ? '' : 'is-invalid' }}" value="{{ tournament.tournamentName }}">
+        {% for violation in violations.tournamentName %}
+            <div class="invalid-feedback">{{ violation }}</div>
+        {% endfor %}
+    </div>
+
+    <div class="mb-3">
+        <label for="inputEmail" class="form-label">Tournament Email</label>
+        <input type="text" id="inputEmail" name="tournamentEmail" placeholder="Sample : tournament@school.com" required class="form-control {{ violations.firstname is not defined ? '' : 'is-invalid' }}" value="{{ tournament.tournamentEmail }}">
+        {% for violation in violations.tournamentEmail %}
+            <div class="invalid-feedback">{{ violation }}</div>
+        {% endfor %}
+    </div>
+
+    <div class="mb-3">
+        <label for="inputTournamentStartDate" class="form-label">Tournament Start Date</label>
+        <input type="date" id="inputTournamentStartDate" name="tournamentStartDate" placeholder="Sample : 25" required class="form-control {{ violations.old is not defined ? '' : 'is-invalid' }}" value="{{ tournament.tournamentStartDate }}">
+        {% for violation in violations.tournamentStartDate %}
+            <div class="invalid-feedback">{{ violation }}</div>
+        {% endfor %}
+    </div>
+
+    <div class="mb-3">
+        <label for="inputTournamentEndDate" class="form-label">Tournament End Date</label>
+        <input type="date" id="inputTournamentEndDate" name="tournamentEndDate" placeholder="Sample : 25" required class="form-control {{ violations.old is not defined ? '' : 'is-invalid' }}" value="{{ tournament.tournamentEndDate }}">
+        {% for violation in violations.tournamentEndDate %}
+            <div class="invalid-feedback">{{ violation }}</div>
+        {% endfor %}
+    </div>
+
+    <div class="mb-3">
+        <label for="inputnb_slots" class="form-label">Number of slots for the tournament</label>
+        <input type="text" id="inputnb_slots" name="nb_slots" placeholder="Sample : 25" required class="form-control {{ violations.old is not defined ? '' : 'is-invalid' }}" value="{{ tournament.nb_slots }}">
+        {% for violation in violations.nb_slots %}
+            <div class="invalid-feedback">{{ violation }}</div>
+        {% endfor %}
+    </div>
+
+    <div class="mb-3">
+        <label for="inputentry_price" class="form-label">Entry Price for the tournament (can be 0)</label>
+        <input type="text" id="inputentry_price" name="entry_price" placeholder="Sample : 25" required class="form-control {{ violations.old is not defined ? '' : 'is-invalid' }}" value="{{ tournament.entry_price }}">
+        {% for violation in violations.entry_price %}
+            <div class="invalid-feedback">{{ violation }}</div>
+        {% endfor %}
+    </div>
+
+    <div class="mb-3">
+        <label for="inputRules" class="form-label">Rules</label>
+        <input type="text" id="inputRules" name="rules" placeholder="Sample : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin euismod at urna ut consequat. Ut sed placerat mauris. Ut eleifend eget ligula nec gravida. In hac habitasse platea dictumst. Nunc magna lectus, hendrerit sit amet ipsum eu, tempus vestibulum lorem. Ut vestibulum, leo a ullamcorper malesuada, diam metus aliquam nisi, id molestie lorem tortor eget erat. Donec congue facilisis porta. Mauris luctus pretium ullamcorper. Aliquam auctor ornare neque, at maximus ante aliquam ut. Vivamus pharetra augue quam, quis porta enim rhoncus id. Aenean lectus augue, laoreet nec nulla sit amet, vestibulum accumsan nunc. Donec a ullamcorper dolor. Vivamus elementum tellus vitae nunc efficitur commodo." required class="form-control {{ violations.old is not defined ? '' : 'is-invalid' }}" value="{{ tournament.rules }}">
+        {% for violation in violations.rules %}
+            <div class="invalid-feedback">{{ violation }}</div>
+        {% endfor %}
+    </div>
+
+    <div class="mb-3">
+        <label for="inputAdress" class="form-label">Adress</label>
+        <input type="text" id="inputAdress" name="adress" placeholder="Sample : 51 Kings Street London." required class="form-control {{ violations.old is not defined ? '' : 'is-invalid' }}" value="{{ tournament.adress }}">
+        {% for violation in violations.adress %}
+            <div class="invalid-feedback">{{ violation }}</div>
+        {% endfor %}
+    </div>
+
+    <div class="mb-3">
+        <label for="inputprize_money" class="form-label">Enter the prize money for your tournament (can be 0) </label>
+        <input type="text" id="inputprize_money" name="prize_money" placeholder="Sample : 50" required class="form-control {{ violations.old is not defined ? '' : 'is-invalid' }}" value="{{ tournament.prize_money }}">
+        {% for violation in violations.prize_money %}
+            <div class="invalid-feedback">{{ violation }}</div>
+        {% endfor %}
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
