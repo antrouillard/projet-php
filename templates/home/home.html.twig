@@ -2,6 +2,8 @@
 
 {% block title %}Accueil{% endblock %}
 
+{% block body_class %}home-page{% endblock %}
+
 {% block body %}
     <section class="hero">
         <h1>Bienvenue sur notre plateforme de tournois étudiants</h1>
@@ -10,19 +12,17 @@
     </section>
 
     <section class="recent-tournaments">
-        <div class="groupHeader">
-            <h2>Tournois récemment créés</h2>
-        </div>
+        {{ include('home/carousel.html.twig') }}
 
-        <div class="tournament-group">
+        <!--<div class="tournament-group">
         {% for img in imgTab %}
             <div class="tournament">
                 <img src="{{img}}" alt="Tournoi 1">
-                <!-- Ajoutez d'autres détails du tournoi ici -->
+                 Ajoutez d'autres détails du tournoi ici 
             </div>
         {% endfor %}
-            <!-- Ajoutez plus d'éléments de tournoi si nécessaire -->
-        </div>
+             Ajoutez plus d'éléments de tournoi si nécessaire 
+        </div> -->
     </section>
 {% endblock %}
 
