@@ -1,0 +1,14 @@
+.navbar-custom {
+    background-color: blue; /* Définir la couleur de fond */
+    color: white; /* Définir la couleur du texte si nécessaire */
+}
+
+/* Vous pouvez également ajouter des styles pour les liens de la barre de navigation */
+.navbar-custom a {
+    color: white; /* Définir la couleur des liens */
+}
+
+/* Si vous voulez changer la couleur au survol des liens */
+.navbar-custom a:hover {
+    color: yellow; /* Couleur au survol */
+}
