@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil{% endblock %}
+{% block title %}Connexion{% endblock %}
 
 {% block body_class %}home-page{% endblock %}
 
@@ -8,15 +8,9 @@
     <section class="hero">
         <h1>Bienvenue sur notre plateforme de tournois étudiants</h1>
         <p>Participez aux tournois les plus passionnants et rencontrez d'autres étudiants passionnés!</p>
-        <!-- Ajoutez d'autres éléments du héros ici -->
     </section>
-
-    <section class="recent-tournaments">
-        {{ include('home/carousel.html.twig') }}
+    <section class="registration-form">
+        <h2>Inscription :</h2>
+        {{ include('register/_form.html.twig') }}
     </section>
 {% endblock %}
-
-
-
-
-

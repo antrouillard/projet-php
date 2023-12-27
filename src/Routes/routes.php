@@ -20,5 +20,8 @@ $routes->add('tournamentNew', new Route('/tournament/tnew'));
 $routes->add('tournamentShow', new Route('/student/{id}', [], ['id' => ('\d+')]));
 $routes->add('tournamentEdit', new Route('/tournament/{id}/tedit', [], ['id' => ('\d+')]));
 $routes->add('tournamentDelete', new Route('/tournament/{id}/tdelete', [], ['id' => ('\d+')]));
+$routes->add('login', new Route('/login'));
+$routes->add('logout', new Route('/logout'));
+$routes->add('register', new Route('/register'));
 
 return $routes;

@@ -20,25 +20,20 @@ class User
     #[Assert\Length(
         min: 2,
         max: 50,
-        minMessage: 'Your name must be at least {{ limit }} characters long',
-        maxMessage: 'Your name cannot be longer than {{ limit }} characters',
+        minMessage: 'Your username must be at least {{ limit }} characters long',
+        maxMessage: 'Your username cannot be longer than {{ limit }} characters',
     )]
-    private string $name;
+    private string $username;
 
     #[ORM\Column(type: 'string')]
     #[Assert\NotBlank]
     #[Assert\Length(
         min: 2,
-        max: 50,
-        minMessage: 'Your first name must be at least {{ limit }} characters long',
-        maxMessage: 'Your first name cannot be longer than {{ limit }} characters',
+        max: 255,
+        minMessage: 'Your password must be at least {{ limit }} characters long',
+        maxMessage: 'Your password cannot be longer than {{ limit }} characters',
     )]
-    private string $firstname;
-    
-    #[ORM\Column(type: 'integer')]
-    #[Assert\NotBlank]
-    #[Assert\PositiveOrZero]
-    private int $old;
+    private string $password;
 
     public function getId(): ?int
     {
@@ -51,42 +46,31 @@ class User
         return $this;
     }
 
-    public function getName(): string
+    public function getUsername(): string
     {
-        return $this->name;
+        return $this->username;
     }
 
-    public function setName(string $name): User
+    public function setUsername(string $username): User
     {
-        $this->name = $name;
+        $this->username = $username;
         return $this;
     }
 
-    public function getFirstname(): string
+    public function getPassword(): string
     {
-        return $this->firstname;
+        return $this->password;
     }
 
-    public function setFirstname(string $firstname): User
+    public function setPassword(string $password): User
     {
-        $this->firstname = $firstname;
-        return $this;
-    }
-
-    public function getOld(): int
-    {
-        return $this->old;
-    }
-
-    public function setOld(int $old): User
-    {
-        $this->old = $old;
+        $this->password = $password;
         return $this;
     }
 
     public function __toString(): string
     {
-        return sprintf('%s %s', $this->name, $this->firstname);
+        return sprintf('%s', $this->username);
     }
 
 
