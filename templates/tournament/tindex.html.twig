@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Index Student{% endblock %}
+
+{% block body %}
+    <h1>Index Student</h1>
+
+    <h2>NB Student - {{ tournaments|length }}</h2>
+
+    <a href="/tournament/tnew">New student</a>
+
+    <div>
+        {% for tournaments in tournaments %}
+            {% if loop.first %}
+                <ul>
+            {% endif %}
+            <li>
+                <a href="/tournament/{{ tournament.id }}">{{ tournament.id }} - {{ tournament.name }}</a>
+                <a href="/tournament/{{ tournament.id }}/tedit">Edit</a>
+                <a href="/tournament/{{ tournament.id }}/tdelete">Delete</a>
+            </li>
+            {% if loop.last %}
+                </ul>
+            {% endif %}
+        {% else %}
+            <b>There are no tournaments</b>
+        {% endfor %}
+    </div>
+{% endblock %}

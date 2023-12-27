@@ -23,5 +23,5 @@ return array(
     'Stringable' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
     'UnhandledMatchError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
     'ValueError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
-    'ï¿½' => $vendorDir . '/symfony/cache/Traits/ValueWrapper.php',
+    '©' => $vendorDir . '/symfony/cache/Traits/ValueWrapper.php',
 );

@@ -5,6 +5,7 @@ namespace Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Repository\TournamentRepository;
 use Symfony\Component\Validator\Constraints as Assert;
+use DateTime;
 
 #[ORM\Entity(repositoryClass: TournamentRepository::class)]
 #[ORM\Table(name: 'tournaments')]
@@ -13,150 +14,111 @@ class Tournament
     #[ORM\Id]
     #[ORM\Column(type: 'integer')]
     #[ORM\GeneratedValue]
-    private int|null $tournamentId = null;
+    private int|null $id = null;
 
     #[ORM\Column(type: 'string')]
     #[Assert\NotBlank]
     #[Assert\Length(
         min: 2,
         max: 50,
-        minMessage: 'The name of your tournament must be at least {{ limit }} characters long',
-        maxMessage: 'The name of your tournament cannot be longer than {{ limit }} characters',
+        minMessage: 'Your name must be at least {{ limit }} characters long',
+        maxMessage: 'Your name cannot be longer than {{ limit }} characters',
     )]
-    private string $tournamentName;
-
-    #[ORM\Column(type: 'string')]
-    #[Assert\NotBlank]
-    #[Assert\Length(
-        min: 2,
-        max: 50,
-        minMessage: 'The email must be at least {{ limit }} characters long',
-        maxMessage: 'The email cannot be longer than {{ limit }} characters',
-    )]
-    private string $tournamentEmail;
-
-    #[ORM\Column(type: 'date')]
-    #[Assert\NotBlank]
-    private string $tournamentStartDate;
-
-    #[ORM\Column(type: 'date')]
-    #[Assert\NotBlank]
-    private string $tournamentEndDate;
-
+    private string $name;
 
     #[ORM\Column(type: 'integer')]
-    #[Assert\NotBlank]
-    #[Assert\PositiveOrZero]
-    private int $nb_slots;
-
-    #[ORM\Column(type: 'float')]
-    #[Assert\NotBlank]
-    private float $entry_price;
+    //#[Assert\NotBlank]
+    private int $entryPrice;
 
     #[ORM\Column(type: 'string')]
     #[Assert\NotBlank]
     #[Assert\Length(
         min: 2,
-        max: 1000,
-        minMessage: 'The rules must be at least {{ limit }} characters long',
-        maxMessage: 'The rules of your tournament cannot be longer than {{ limit }} characters',
+        max: 50,
+        minMessage: 'Your first name must be at least {{ limit }} characters long',
+        maxMessage: 'Your first name cannot be longer than {{ limit }} characters',
     )]
     private string $rules;
 
+    
+    #[ORM\Column(type: 'date')]
+    #[Assert\NotNull]
+    private ?DateTime $startDate;
+
+
+    #[ORM\Column(type: 'date')]
+    #[Assert\NotNull]
+    private ?DateTime $endDate;
+
+    #[ORM\Column(type: 'integer')]
+    #[Assert\NotNull]
+    private int $nbSlots;
+
     #[ORM\Column(type: 'string')]
-    #[Assert\NotBlank]
-    #[Assert\Length(
-        min: 2,
-        max: 1000,
-        minMessage: 'The adress must be at least {{ limit }} characters long',
-        maxMessage: 'The adress of your tournament cannot be longer than {{ limit }} characters',
-    )]
+    #[Assert\NotNull]
+    private string $mail;
+
+    #[ORM\Column(type: 'string')]
+    #[Assert\NotNull]
     private string $adress;
 
-    #[ORM\Column(type: 'float')]
-    #[Assert\NotBlank]
-    private float $prize_money;
+    #[ORM\Column(type: 'integer')]
+    #[Assert\NotNull]
+    private int $prizeMoney;
 
-
-    public function getTournamentId(): ?int
+    public function getId(): ?int
     {
-        return $this->tournamentId;
+        return $this->id;
     }
 
-    public function setTournamentId(?int $tournamentId): Tournament
+    public function setId(?int $id): Tournament
     {
-        $this->tournamentId = $tournamentId;
+        $this->id = $id;
         return $this;
     }
+
+    public function getStartDate(): ?\DateTime
+    {
+        return $this->startDate;
+    }
+
+    public function setStartDate(?\DateTime $startDate): Tournament
+    {
+        $this->startDate = $startDate;
+        return $this;
+    }
+
+    public function getEndDate(): ?\DateTime
+    {
+        return $this->endDate;
+    }
+
+    public function setEndDate(?\DateTime $endDate): Tournament
+    {
+        $this->endDate = $endDate;
+        return $this;
+    }
+    
 
     public function getName(): string
     {
-        return $this->tournamentName;
+        return $this->name;
     }
 
-    public function setTournamentName(string $tournamentName): Tournament
+    public function setName(string $name): Tournament
     {
-        $this->tournamentName = $tournamentName;
+        $this->name = $name;
         return $this;
     }
 
-    public function getTournamentEmail(): string
+    public function getEntryPrice(): ?int
     {
-        return $this->tournamentEmail;
+        return $this->entryPrice;
     }
 
-    public function setTournamentEmail(string $tournamentEmail): Tournament
+    public function setEntryPrice(int $entryPrice): Tournament
     {
-        $this->tournamentEmail = $tournamentEmail;
-        return $this;
-    }
-
-    public function getTournamentStartDate(): string
-    {
-        return $this->tournamentStartDate;
-    }
-
-    public function setTournamentStartDate(string $tournamentStartDate): Tournament
-    {
-        $this->tournamentStartDate = $tournamentStartDate;
-        return $this;
-    }
-
-    public function getTournamentEndDate(): string
-    {
-        return $this->tournamentEndDate;
-    }
-
-    public function setTournamentEndDate(string $tournamentStartDate): Tournament
-    {
-        $this->tournamentStartDate = $tournamentStartDate;
-        return $this;
-    }
-
-    public function getNbSlots(): ?int
-    {
-        return $this->nb_slots;
-    }
-
-    public function setNbSlots(?int $nb_slots): Tournament
-    {
-        $this->nb_slots = $nb_slots;
-        return $this;
-    }
-
-    public function getEntryPrice(): ?float
-    {
-        return $this->entry_price;
-    }
-
-    public function setEntryPrice(?float $entry_price): Tournament
-    {
-        return $this;
-    }
-
-    public function setRules(string $rules): Tournament
-    {
-        $this->rules = $rules;
+        $this->entryPrice = $entryPrice;
         return $this;
     }
 
@@ -165,9 +127,31 @@ class Tournament
         return $this->rules;
     }
 
-    public function setAdress(string $adress): Tournament
+    public function setRules(string $rules): Tournament
     {
-        $this->adress = $adress;
+        $this->rules = $rules;
+        return $this;
+    }
+
+    public function getNbSlots(): ?int
+    {
+        return $this->nbSlots;
+    }
+
+    public function setNbSlots(?int $nbSlots): Tournament
+    {
+        $this->nbSlots = $nbSlots;
+        return $this;
+    }
+
+    public function getMail(): string
+    {
+        return $this->mail;
+    }
+
+    public function setMail(string $mail): Tournament
+    {
+        $this->mail = $mail;
         return $this;
     }
 
@@ -176,19 +160,29 @@ class Tournament
         return $this->adress;
     }
 
-    public function getPrize_money(): ?float
+    public function setAdress(string $adress): Tournament
     {
-        return $this->prize_money;
+        $this->adress = $adress;
+        return $this;
     }
 
-    public function setPrize_money(?float $prize_money): Tournament
+    public function getPrizeMoney(): ?int
     {
-        $this->prize_money = $prize_money;
+        return $this->prizeMoney;
+    }
+
+    public function setPrizeMoney(int $prizeMoney): Tournament
+    {
+        $this->prizeMoney = $prizeMoney;
         return $this;
     }
 
     public function __toString(): string
     {
-        return sprintf('%s', $this->tournamentName);
+        return sprintf('%s %s', $this->name, $this->rules);
     }
+
+
+
+
 }

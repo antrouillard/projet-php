@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Show Student - {{ student.id }}{% endblock %}
+
+{% block body %}
+    <h1>Show Student - {{ student.id }}</h1>
+
+    <p>Name : <var>{{ tournament.name }}</var></p>
+    <p>Firstname : <var>{{ tournament.entryPrice }}</var></p>
+    <p>Old : <var>{{ tournament.rules }}</var></p>
+{% endblock %}

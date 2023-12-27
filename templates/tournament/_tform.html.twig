@@ -1,0 +1,74 @@
+<form method="post">
+    <div class="mb-3">
+        <label for="inputName" class="form-label">Nom du tournoi</label>
+        <input type="text" id="inputName" name="name" placeholder="Sample : Cauchois" required class="form-control {{ violations.name is not defined ? '' : 'is-invalid' }}" value="{{ tournament.name }}">
+        {% for violation in violations.name %}
+            <div class="invalid-feedback">{{ violation }}</div>
+        {% endfor %}
+    </div>
+    <div class="mb-3">
+        <label for="inputEntryPrice" class="form-label">Prix d'entrée</label>
+        <input type="number" id="inputPrice" name="entryPrice" placeholder="Sample : 50" required class="form-control {{ violations.entryPrice is not defined ? '' : 'is-invalid' }}" value="{{ tournament.entryPrice }}">
+        {% for violation in violations.entryPrice %}
+            <div class="invalid-feedback">{{ violation }}</div>
+        {% endfor %}
+    </div>
+
+    <div class="mb-3">
+        <label for="inputRules" class="form-label">Règles</label>
+        <input type="text" id="inputRules" name="rules" placeholder="Sample : interdit de " required class="form-control {{ violations.rules is not defined ? '' : 'is-invalid' }}" value="{{ tournament.rules }}">
+        {% for violation in violations.rules %}
+            <div class="invalid-feedback">{{ violation }}</div>
+        {% endfor %}
+    </div>
+
+    <div class="mb-3">
+        <label for="inputStartDate" class="form-label">Date de début</label>
+        <input type="date" id="inputStartDate" name="startDate" placeholder="Sample : 09/09/2009 " required class="form-control {{ violations.startDate is not defined ? '' : 'is-invalid' }}" value="{{ tournament.startDate }}">
+        {% for violation in violations.startDate %}
+            <div class="invalid-feedback">{{ violation }}</div>
+        {% endfor %}
+    </div>
+
+    <div class="mb-3">
+        <label for="inputEndDate" class="form-label">Date de fin</label>
+        <input type="date" id="inputEndDate" name="endDate" placeholder="Sample : 09/09/2009 " required class="form-control {{ violations.endDate is not defined ? '' : 'is-invalid' }}" value="{{ tournament.endDate }}">
+        {% for violation in violations.endDate %}
+            <div class="invalid-feedback">{{ violation }}</div>
+        {% endfor %}
+    </div>
+
+    <div class="mb-3">
+        <label for="inputNbSlots" class="form-label">nombre de places</label>
+        <input type="number" id="inputNbSlots" name="nbSlots" placeholder="Sample : 50 " required class="form-control {{ violations.nbSlots is not defined ? '' : 'is-invalid' }}" value="{{ tournament.nbSlots }}">
+        {% for violation in violations.nbSlots %}
+            <div class="invalid-feedback">{{ violation }}</div>
+        {% endfor %}
+    </div>
+
+    <div class="mb-3">
+        <label for="inputMail" class="form-label">email</label>
+        <input type="text" id="inputMail" name="mail" placeholder="Sample : x.y@gmail.com" required class="form-control {{ violations.mail is not defined ? '' : 'is-invalid' }}" value="{{ tournament.mail }}">
+        {% for violation in violations.mail %}
+            <div class="invalid-feedback">{{ violation }}</div>
+        {% endfor %}
+    </div>
+
+    <div class="mb-3">
+        <label for="inputAdress" class="form-label">adresse</label>
+        <input type="text" id="inputAdress" name="adress" placeholder="Sample : 25 boulevard de la Vilette, Paris" required class="form-control {{ violations.adress is not defined ? '' : 'is-invalid' }}" value="{{ tournament.adress }}">
+        {% for violation in violations.adress %}
+            <div class="invalid-feedback">{{ violation }}</div>
+        {% endfor %}
+    </div>
+
+    <div class="mb-3">
+        <label for="inputNbSlots" class="form-label">Prize Money</label>
+        <input type="number" id="inputNbSlots" name="prizeMoney" placeholder="Sample : 50 " required class="form-control {{ violations.prizeMoney is not defined ? '' : 'is-invalid' }}" value="{{ tournament.prizeMoney }}">
+        {% for violation in violations.prizeMoney %}
+            <div class="invalid-feedback">{{ violation }}</div>
+        {% endfor %}
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
