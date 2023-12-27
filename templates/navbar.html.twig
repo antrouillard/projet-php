@@ -12,9 +12,17 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/user">User</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/login">Login</a>
-                </li>
+                {% if app.session.get('loggedin') %}
+                    <span>Bienvenue, {{ app.session.get('name') }} !</span>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Se déconnecter</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Se connecter</a>
+                    </li>
+                {% endif %}
+                
             </ul>
         </div>
     </div>

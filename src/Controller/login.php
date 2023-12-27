@@ -25,6 +25,10 @@ if ($request->isMethod('POST')) {
     $user = $userRepository->findOneBy(['username' => $username]);
 
     if ($user && password_verify($password, $user->getPassword())) {
+        session_regenerate_id();
+		$_SESSION['loggedin'] = TRUE;
+		$_SESSION['name'] = $_POST['username'];
+		/*$_SESSION['id'] = $id;*/
         return new RedirectResponse('/');
     } else {
         $arrayViolations['authentication'][] = 'Nom d\'utilisateur ou mot de passe incorrect.';
