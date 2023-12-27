@@ -1,0 +1,17 @@
+<form method="post">
+    <div class="mb-3">
+        <label for="inputUsername" class="form-label">Nom d'utilisateur</label>
+        <input type="text" id="inputUsername" name="username" placeholder="Sample : Cauchois" required class="form-control {{ violations.name is not defined ? '' : 'is-invalid' }}" value="{{ user.username }}">
+        {% for violation in violations.username %}
+            <div class="invalid-feedback">{{ violation }}</div>
+        {% endfor %}
+    </div>
+    <div class="mb-3">
+        <label for="inputPassword" class="form-label">Mot de passe</label>
+        <input type="text" id="inputPassword" name="password" placeholder="Sample : 12345678" required class="form-control {{ violations.firstname is not defined ? '' : 'is-invalid' }}" value="{{ user.password }}">
+        {% for violation in violations.password %}
+            <div class="invalid-feedback">{{ violation }}</div>
+        {% endfor %}
+    </div>
+    <button type="submit" class="btn btn-primary">Inscription</button>
+</form>

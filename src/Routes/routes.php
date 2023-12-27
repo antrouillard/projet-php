@@ -15,5 +15,7 @@ $routes->add('userDelete', new Route('/user/{id}/delete', [], ['id' => ('\d+')])
 $routes->add('search', new Route('/search'));
 $routes->add('create', new Route('/create'));
 $routes->add('tournament', new Route('/tournament/{id}',[],['id' => ('\d+')]));
+$routes->add('login', new Route('/login'));
+$routes->add('register', new Route('/register'));
 
 return $routes;
