@@ -20,7 +20,7 @@ $arrayViolations = [];
 if (Request::METHOD_POST == $request->getMethod()) {
     $user = (new User())
         ->setUsername($request->get('username'))
-        ->setPassword($request->get('password'));
+        ->setPassword(password_hash($request->get('password'), PASSWORD_DEFAULT));
 
     $violations = $validator->validate($user);
 

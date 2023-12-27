@@ -8,7 +8,7 @@ $folder = "images/";
 
 $imgTab = array();
 
-$imgTab = glob($folder . '*.{jpg,jpeg,png,gif}', GLOB_BRACE);
+$imgTab = glob($folder . '*.{jpg,jpeg,png,gif,webp}', GLOB_BRACE);
 
 return new Response($twig->render('home/home.html.twig',['imgTab' =>$imgTab]));
 

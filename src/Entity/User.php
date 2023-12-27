@@ -29,9 +29,9 @@ class User
     #[Assert\NotBlank]
     #[Assert\Length(
         min: 2,
-        max: 50,
-        minMessage: 'Your first name must be at least {{ limit }} characters long',
-        maxMessage: 'Your first name cannot be longer than {{ limit }} characters',
+        max: 255,
+        minMessage: 'Your password must be at least {{ limit }} characters long',
+        maxMessage: 'Your password cannot be longer than {{ limit }} characters',
     )]
     private string $password;
 
