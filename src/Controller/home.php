@@ -17,9 +17,11 @@ $imgTab = glob($folder . '*.{jpg,jpeg,png,gif,webp}', GLOB_BRACE);
 if(!isset($_SESSION['loggedin'])){
     return new RedirectResponse('/login');
 }
-else {
-    echo $_SESSION['name'];
-}
 
-return new Response($twig->render('home/home.html.twig',['imgTab' =>$imgTab]));
+$userdata = [
+    'username' => $_SESSION['name'],
+    'loggedin' => $_SESSION['loggedin'],
+];
+
+return new Response($twig->render('home/home.html.twig',['imgTab' =>$imgTab,'userdata' =>$userdata]));
 

@@ -13,6 +13,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
+session_start();
+
 $userRepository = $entityManager->getRepository(User::class);
 
 $arrayViolations = [];
@@ -25,10 +27,12 @@ if ($request->isMethod('POST')) {
     $user = $userRepository->findOneBy(['username' => $username]);
 
     if ($user && password_verify($password, $user->getPassword())) {
-        session_regenerate_id();
-		$_SESSION['loggedin'] = TRUE;
-		$_SESSION['name'] = $_POST['username'];
-		/*$_SESSION['id'] = $id;*/
+        if (session_status() === PHP_SESSION_ACTIVE) {
+            session_regenerate_id();
+            $_SESSION['loggedin'] = TRUE;
+            $_SESSION['name'] = $_POST['username'];
+            $_SESSION['id'] = $user->getId();
+        }
         return new RedirectResponse('/');
     } else {
         $arrayViolations['authentication'][] = 'Nom d\'utilisateur ou mot de passe incorrect.';

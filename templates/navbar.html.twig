@@ -12,8 +12,8 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/user">User</a>
                 </li>
-                {% if app.session.get('loggedin') %}
-                    <span>Bienvenue, {{ app.session.get('name') }} !</span>
+                {% if userdata.loggedin %}
+                    <span>Bienvenue, {{ userdata.username }} !</span>
                     <li class="nav-item">
                         <a class="nav-link" href="/logout">Se déconnecter</a>
                     </li>
