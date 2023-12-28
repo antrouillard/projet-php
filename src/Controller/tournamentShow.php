@@ -42,6 +42,8 @@ $userdata = [
 
 $user = $userRepository->findOneBy(['username' => $userdata['username']]);
 
+$UserAlreadyRegistered = false;
+
 $checkUserRegistration = $inscriptionRepository->findOneBy([
     'user' => $user,
     'tournament' => $tournament,
@@ -61,13 +63,15 @@ if (Request::METHOD_POST == $request->getMethod()) {
         ->setEmail($request->get('email'))
         ->setTournament($tournament)
         ->setUser($user);
-
+    
     $violations = $validator->validate($inscription);
 
     if ($violations->count() == 0) {
+        $tournamentSlotsTaken = $tournament->getNbSlotsTaken();
+        $tournament->setNbSlotsTaken($tournamentSlotsTaken+1);
+
         $entityManager->persist($inscription);
         $entityManager->flush();
-
         return new RedirectResponse('/tournament'.'/'.$id);
     }
     foreach ($violations as $violation) {

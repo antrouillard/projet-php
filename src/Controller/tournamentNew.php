@@ -20,6 +20,7 @@ if (Request::METHOD_POST == $request->getMethod()) {
     $tournament->setEntryPrice((int) $request->get('entryPrice'));
     $tournament->setRules($request->get('rules'));
     $tournament->setNbSlots($request->get('nbSlots'));
+    $tournament->setNbSlotsTaken(0);
     $tournament->setMail($request->get('mail'));
     $tournament->setAdress($request->get('adress'));
     $tournament->setPrizeMoney($request->get('prizeMoney'));

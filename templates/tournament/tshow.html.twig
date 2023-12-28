@@ -30,11 +30,16 @@
 
         <div class="tournament-registration">
             <h2>Inscription</h2>
-            {% if UserAlreadyRegistered == false %}
-                <p>Les inscriptions sont ouvertes jusqu'au {{tournament.startDate|date('Y-m-d')}}. Inscrivez-vous dès maintenant!</p>
-                {{ include('tournament/_tregisterform.html.twig') }}
+            {% if tournament.nbSlots > tournament.nbSlotsTaken %}
+                {% if UserAlreadyRegistered == false %}
+                    <p>Les inscriptions sont ouvertes jusqu'au {{tournament.startDate|date('Y-m-d')}}. Inscrivez-vous dès maintenant!</p>
+                    <p>Il reste {{ tournament.nbSlots - tournament.nbSlotsTaken }} places</p>
+                    {{ include('tournament/_tregisterform.html.twig') }}
+                {% else %}
+                    <p> Vous êtes déja inscrit à ce tournoi !</p>
+                {% endif %}
             {% else %}
-                <p> Vous êtes déja inscrit à ce tournoi !</p>
+                <p> Ce tournoi est plein ! </p>
             {% endif %}
         </div>
     </section>
