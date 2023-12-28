@@ -8,7 +8,7 @@
 use Entity\Tournament;
 use Symfony\Component\HttpFoundation\Response;
 
-$tournamentRepository = $entityManager->getRepository(Tournament::class);
-$tournaments = $tournamentRepository->findAll();
+$TournamentRepository = $entityManager->getRepository(Tournament::class);
+$Tournaments = $TournamentRepository->findAll();
 
-return new Response($twig->render('tournament/tindex.html.twig', ['tournaments' => $tournaments]));
+return new Response($twig->render('tournament/tindex.html.twig', ['tournaments' => $Tournaments]));

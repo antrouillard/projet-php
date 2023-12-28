@@ -4,10 +4,14 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 $tournamentRepository = $entityManager->getRepository(Tournament::class);
 
 $arrayViolations = [];
+
+$directory = __DIR__.'/../../public/images';
+
 
 if (Request::METHOD_POST == $request->getMethod()) {
     // Créez une nouvelle instance de l'entité Tournament
@@ -41,6 +45,18 @@ if (Request::METHOD_POST == $request->getMethod()) {
 
     $tournament->setEndDate($endDate);
     
+    $uploadedFile = $request->files->get('tournamentImage');
+
+    if ($uploadedFile instanceof UploadedFile) {
+        // Générez un nom de fichier unique
+        $newFileName = md5(uniqid()) . '.' . $uploadedFile->getClientOriginalExtension();
+
+        // Déplacez le fichier téléchargé vers le répertoire approprié (à ajuster selon vos besoins)
+        $uploadedFile->move($directory, $newFileName);
+
+        // Mettez à jour le champ imgPath de l'entité Tournament
+        $tournament->setImgPath($newFileName);
+    }
 
 
     // Validez l'entité Tournament

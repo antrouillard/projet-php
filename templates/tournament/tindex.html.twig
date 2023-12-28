@@ -1,16 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Index Student{% endblock %}
+{% block title %}Liste des tournois WIP{% endblock %}
 
 {% block body %}
-    <h1>Index Student</h1>
+    <h1>Liste des tournois WIP</h1>
 
-    <h2>NB Student - {{ tournaments|length }}</h2>
+    <h2>Nombre de tournois - {{ tournaments|length }}</h2>
 
-    <a href="/tournament/tnew">New student</a>
+    <a href="/tournament/tnew">Créez un nouveau tournoi</a>
 
     <div>
-        {% for tournaments in tournaments %}
+        {% for tournament in tournaments %}
             {% if loop.first %}
                 <ul>
             {% endif %}

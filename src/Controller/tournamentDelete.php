@@ -9,10 +9,10 @@
 use Entity\Tournament;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
-$studentRepository = $entityManager->getRepository(Tournament::class);
-$student = $tournamentRepository->find($id);
+$TournamentRepository = $entityManager->getRepository(Tournament::class);
+$Tournament = $TournamentRepository->find($id);
 
-$entityManager->remove($tournament);
+$entityManager->remove($Tournament);
 $entityManager->flush();
 
 return new RedirectResponse('/tournament');
