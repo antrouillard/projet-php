@@ -13,10 +13,3 @@ items.forEach((el) => {
         next = next.nextElementSibling;
     }
 });
-
-document.querySelector('form').addEventListener('submit', function (event) {
-    event.preventDefault();
-    console.log('Username:', document.getElementById('inputUsername').value);
-    console.log('Password:', document.getElementById('inputPassword').value);
-    this.submit();
-});
