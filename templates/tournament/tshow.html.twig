@@ -30,8 +30,12 @@
 
         <div class="tournament-registration">
             <h2>Inscription</h2>
-            <p>Les inscriptions sont ouvertes jusqu'au {{tournament.startDate|date('Y-m-d')}}. Inscrivez-vous dès maintenant!</p>
-            <!-- Ajoutez un formulaire d'inscription si nécessaire -->
+            {% if UserAlreadyRegistered == false %}
+                <p>Les inscriptions sont ouvertes jusqu'au {{tournament.startDate|date('Y-m-d')}}. Inscrivez-vous dès maintenant!</p>
+                {{ include('tournament/_tregisterform.html.twig') }}
+            {% else %}
+                <p> Vous êtes déja inscrit à ce tournoi !</p>
+            {% endif %}
         </div>
     </section>
 {% endblock %}
