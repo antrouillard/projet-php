@@ -66,6 +66,10 @@ class Tournament
     #[Assert\NotNull]
     private int $prizeMoney;
 
+    #[ORM\Column(type: 'string')]
+    #[Assert\NotNull]
+    private string $img_path;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -177,12 +181,23 @@ class Tournament
         return $this;
     }
 
+    public function getImgPath() : string
+    {
+        return $this->img_path;
+    }
+
+    public function setImgPath(string $img_path): Tournament
+    {
+        $this->img_path = $img_path;
+        return $this;
+    }
+
     public function __toString(): string
     {
         return sprintf('%s %s', $this->name, $this->rules);
     }
 
-
+    
 
 
 }

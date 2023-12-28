@@ -12,4 +12,16 @@ use Symfony\Component\HttpFoundation\Response;
 $tournamentRepository = $entityManager->getRepository(Tournament::class);
 $tournament = $tournamentRepository->find($id);
 
-return new Response($twig->render('tournament/tshow.html.twig', ['tournament' => $tournament]));
+$folder = "images/";
+$imgPath = $folder . $tournament->getImgPath();
+$img = null;
+
+// Vérifier si le fichier existe avant de l'ajouter à $imgTab
+if (file_exists($imgPath)) {
+    $img = "/".$imgPath;
+}
+else {
+    echo "ALED";
+}
+
+return new Response($twig->render('tournament/tshow.html.twig', ['tournament' => $tournament,'img' => $img]));

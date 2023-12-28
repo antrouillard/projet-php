@@ -3,19 +3,24 @@
             <div class="row mx-auto my-auto justify-content-center">
                 <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner" role="listbox">
-                        {% for img in imgTab %}
+                        {% for tournament in tournaments %}
                             <div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
                                 <div class="col-md-3">
                                     <div class="card">
                                         <div class="card-img">
-                                            <img src="{{ img }}">
+                                            {% if loop.index <= imgTab|length %}
+                                                <a href="/tournament/{{ tournament.id }}"><img src="{{ imgTab[loop.index - 1] }}" alt="Tournament Image"></a>
+                                            {% else %}
+                                                <!-- Fournir une image par défaut si nécessaire -->
+                                                <img src="{{ imgTab[0] }}" alt="Image par défaut">
+                                            {% endif %}
                                         </div>
                                         <div class="card-body text-center">
-                                            <h3 class="card-text">Nom du tournoi</h3>
-                                            <p class="card-info">Thème / Sport / Jeu</p>
-                                            <p class="card-info-details">Date<br>
-                                            Adresse,Ville<br>
-                                            Nombre de participants</p>
+                                            <h3 class="card-text">{{tournament.name}}</h3>
+                                            <!--<p class="card-info">Thème / Sport / Jeu</p>-->
+                                            <p class="card-info-details">Du {{tournament.startDate|date('Y-m-d')}} au {{tournament.endDate|date('Y-m-d')}}<br>
+                                            {{tournament.adress}}<br>
+                                            {{tournament.nbslots}} places</p>
                                         </div>
                                     </div>
                                 </div>

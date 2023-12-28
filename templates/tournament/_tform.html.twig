@@ -1,4 +1,4 @@
-<form method="post">
+<form enctype="multipart/form-data" method="post">
     <div class="mb-3">
         <label for="inputName" class="form-label">Nom du tournoi</label>
         <input type="text" id="inputName" name="name" placeholder="Sample : Cauchois" required class="form-control {{ violations.name is not defined ? '' : 'is-invalid' }}" value="{{ tournament.name }}">
@@ -69,6 +69,12 @@
             <div class="invalid-feedback">{{ violation }}</div>
         {% endfor %}
     </div>
-
+    <div class="mb-3">
+        <label for="inputImage" class="form-label">Image du tournoi</label>
+        <input type="file" id="inputImage" name="tournamentImage" placeholder="Placez une image ici" class="form-control {{ violations.tournamentImage is not defined ? '' : 'is-invalid' }}">
+        {% for violation in violations.tournamentImage %}
+            <div class="invalid-feedback">{{ violation }}</div>
+        {% endfor %}
+    </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>

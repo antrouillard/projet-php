@@ -2,25 +2,43 @@
 
 /** @var Twig\Environment $twig */
 
+use Entity\Tournament;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 $folder = "images/";
-$imgTab = glob($folder . '*.{jpg,jpeg,png,gif}', GLOB_BRACE);
 
-// Récupérez les paramètres de recherche depuis la requête
-/*$searchTerm = $_GET['search'] ?? null;
-$date = $_GET['date'] ?? null;
-$location = $_GET['location'] ?? null;*/
+$TournamentRepository = $entityManager->getRepository(Tournament::class);
+$Tournaments = $TournamentRepository->findAll();
 
-// Faites la logique de recherche en fonction des paramètres
-// Exemple de résultats de recherche (remplacez cela par votre propre logique)
-$searchResults = [
-    ['name' => 'Tournoi A', 'date' => '2023-12-15', 'location' => 'Lieu A'],
-    ['name' => 'Tournoi B', 'date' => '2023-12-20', 'location' => 'Lieu B'],
-];
+$request = Request::createFromGlobals();
+
+if ($request->isMethod('POST')) {
+    $tname = $request->get('search');
+    $tdate = $request->get('date');
+    $tadress = $request->get('location');
+
+    $qb = $TournamentRepository->createQueryBuilder('t');
+
+    if ($tname != '') {
+        $qb->andWhere('t.name LIKE :name')
+           ->setParameter('name', '%' . $tname . '%');
+    }
+
+    if ($tdate != '') {
+        $qb->andWhere('t.startDate = :startDate')
+           ->setParameter('startDate', $tdate);
+    }
+
+    if ($tadress != '') {
+        $qb->andWhere('t.adress LIKE :adress')
+           ->setParameter('adress', '%' . $tadress . '%');
+    }
+
+    $Tournaments = $qb->getQuery()->getResult();
+}
 
 return new Response($twig->render('search/search.html.twig', [
-    'imgTab' => $imgTab,
-    'searchResults' => $searchResults,
+    'tournaments' => $Tournaments,
 ]));
+
