@@ -9,7 +9,7 @@
                                     <div class="card">
                                         <div class="card-img">
                                             {% if loop.index <= imgTab|length %}
-                                                <img src="{{ imgTab[loop.index - 1] }}" alt="Tournament Image">
+                                                <a href="/tournament/{{ tournament.id }}"><img src="{{ imgTab[loop.index - 1] }}" alt="Tournament Image"></a>
                                             {% else %}
                                                 <!-- Fournir une image par défaut si nécessaire -->
                                                 <img src="{{ imgTab[0] }}" alt="Image par défaut">

@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Page de Tournoi - {{ tournament.tournamentName }}{% endblock %}
+{% block title %}{{ tournament.name }}{% endblock %}
 
 {% block body %}
-    <h1>Page de Tournoi - {{ tournament.name }}</h1>
     <section class="tournament-details">
         <header class="tournament-header">
-            <h1>Nom du tournoi - {{ tournament.name }}</h1>
+            <h1>{{ tournament.name }}</h1>
+            <img src=" {{ img }}">
             <p>Date de début : <var>{{tournament.startDate|date('Y-m-d')}}</var></p>
             <p>Date de fin : <var>{{tournament.endDate|date('Y-m-d')}}</var></p>
             <p>Email de contact : <var>{{ tournament.mail}}</var></p>
@@ -25,7 +25,6 @@
                 <li>{{ tournament.rules }}</li>
                 <li>Règle 2</li>
                 <li>Règle 3</li>
-                <!-- Ajoutez plus de règles si nécessaire -->
             </ul>
         </div>
 
