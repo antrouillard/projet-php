@@ -31,7 +31,8 @@ $arrayViolations = [];
 if (Request::METHOD_POST == $request->getMethod()) {
     $user = (new User())
         ->setUsername($request->get('username'))
-        ->setPassword(password_hash($request->get('password'), PASSWORD_DEFAULT));
+        ->setPassword(password_hash($request->get('password'), PASSWORD_DEFAULT))
+        ->setMail($request->get('mail'));
 
     $violations = $validator->validate($user);
 

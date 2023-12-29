@@ -23,6 +23,7 @@ if ($request->isMethod('POST')) {
 
     $username = $request->get('username');
     $password = $request->get('password');
+    $mail = $request->get('mail');
 
     $user = $userRepository->findOneBy(['username' => $username]);
 
