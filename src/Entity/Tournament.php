@@ -54,6 +54,10 @@ class Tournament
     #[Assert\NotNull]
     private int $nbSlots;
 
+    #[ORM\Column(type: 'integer')]
+    #[Assert\NotNull]
+    private int $nbSlotsTaken;
+
     #[ORM\Column(type: 'string')]
     #[Assert\NotNull]
     private string $mail;
@@ -145,6 +149,17 @@ class Tournament
     public function setNbSlots(?int $nbSlots): Tournament
     {
         $this->nbSlots = $nbSlots;
+        return $this;
+    }
+
+    public function getNbSlotsTaken(): ?int
+    {
+        return $this->nbSlotsTaken;
+    }
+
+    public function setNbSlotsTaken(?int $nbSlotsTaken): Tournament
+    {
+        $this->nbSlotsTaken = $nbSlotsTaken;
         return $this;
     }
 

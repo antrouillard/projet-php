@@ -24,6 +24,32 @@
     border-right: none;
 }
 
+@media (max-width: 991px) {
+    
+    .navbar-nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .navbar-nav li:first-child {
+        display: block;
+    }
+}
+
+/* Pour les écrans plus grands, affichez les liens individuels et masquez le bouton de menu déroulant */
+@media (min-width: 992px) {
+    .navbar-nav {
+        flex-direction: row;
+        align-items: center;
+    }
+    .navbar-nav li {
+        display: block;
+    }
+    .navbar-toggler {
+        display: none;
+    }
+}
+
+
 /*Style de la page d'acceuil */
 .home-page{
     background-color: white;
