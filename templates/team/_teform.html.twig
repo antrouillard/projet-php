@@ -1,7 +1,7 @@
 <form enctype="multipart/form-data" method="post">
     <div class="mb-3">
-        <label for="inputName" class="form-label">Nom du tournoi</label>
-        <input type="text" id="inputName" name="name" placeholder="Sample : Cauchois" required class="form-control {{ violations.name is not defined ? '' : 'is-invalid' }}" value="{{ team.name }}">
+        <label for="inputName" class="form-label">Nom de l'équipe</label>
+        <input type="text" id="inputName" name="name" placeholder="Sample : NomEquipeStylée" required class="form-control {{ violations.name is not defined ? '' : 'is-invalid' }}" value="{{ team.name }}">
         {% for violation in violations.name %}
             <div class="invalid-feedback">{{ violation }}</div>
         {% endfor %}

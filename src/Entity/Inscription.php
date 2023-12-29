@@ -31,7 +31,7 @@ class Inscription
     private string $email;
 
     #[ORM\ManyToOne(targetEntity: User::class)]
-    #[ORM\JoinColumn(name: 'id_user', referencedColumnName: 'id_user')]
+    #[ORM\JoinColumn(name: 'id_user', referencedColumnName: 'id')]
     private User $user;
 
     #[ORM\ManyToOne(targetEntity: Tournament::class)]
