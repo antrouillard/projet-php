@@ -8,7 +8,6 @@
  */
 
 use Entity\Team;
-use Entity\User;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,16 +17,6 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 $directory = __DIR__.'/../../public/images';
 
 $TeamRepository = $entityManager->getRepository(Team::class);
-$userRepository = $entityManager->getRepository(User::class);
-$users = $userRepository->findAll();
-$userMaxId = 0;
-
-foreach( $users as $user ){
-    $userId = $user->getId();
-    if ($userId > $userMaxId){
-        $userMaxId = $userId;
-    }
-}
 
 $arrayViolations = [];
 
@@ -55,12 +44,13 @@ if (Request::METHOD_POST == $request->getMethod()) {
     $violations = $validator->validate($team);
 
     if ($violations->count() == 0) {
-        $team->setId($userMaxId+1);
-        echo''.$team->getId().'';
+        $teamId = $team->getId();
+        $redirectResponse = '/team'.'/'.$teamId;
+        echo $redirectResponse;
         $entityManager->persist($team);
         $entityManager->flush();
-
-        return new RedirectResponse('/team/tenew');
+        echo $redirectResponse;
+        return new RedirectResponse($redirectResponse);
     }
     foreach ($violations as $violation) {
         $arrayViolations[$violation->getPropertyPath()][] = $violation->getMessage();

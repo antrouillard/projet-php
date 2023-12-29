@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ team.name }}{% endblock %}
+
+{% block body %}
+    <section class="team-details">
+        <header class="team-header">
+            <h1>{{ team.name }}</h1>
+            <img src=" {{ img }}">
+            <p>Niveau : <var>{{team.niveau}}</var></p>
+            <p>Joueurs : <var>{{team.playersNames}}</var></p>
+        </header>
+    </section>
+{% endblock %}

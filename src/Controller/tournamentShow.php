@@ -20,8 +20,5 @@ $img = null;
 if (file_exists($imgPath)) {
     $img = "/".$imgPath;
 }
-else {
-    echo "ALED";
-}
 
-return new Response($twig->render('tournament/tshow.html.twig', ['tournament' => $tournament,'img' => $img]));
+return new Response($twig->render('team/teamShow.html.twig', ['tournament' => $tournament,'img' => $img]));

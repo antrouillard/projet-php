@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ team.name }}{% endblock %}
+
+{% block body %}
+    <section class="team-details">
+        <header class="team-header">
+            <h1>Match de {{ gameMatch.jeu}} </h1>
+            <h2>Opposant : <var>{{nameParticipant1}}</var> à <var>{{nameParticipant2}}</var></p>
+            <p>Le match sera joué le : <var>{{gameMatch.matchDate|date('Y-m-d') }}</var></p>
+        </header>
+    </section>
+{% endblock %}
