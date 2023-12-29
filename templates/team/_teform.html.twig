@@ -1,0 +1,34 @@
+<form enctype="multipart/form-data" method="post">
+    <div class="mb-3">
+        <label for="inputName" class="form-label">Nom du tournoi</label>
+        <input type="text" id="inputName" name="name" placeholder="Sample : Cauchois" required class="form-control {{ violations.name is not defined ? '' : 'is-invalid' }}" value="{{ team.name }}">
+        {% for violation in violations.name %}
+            <div class="invalid-feedback">{{ violation }}</div>
+        {% endfor %}
+    </div>
+
+    <div class="mb-3">
+        <label for="inputNiveau" class="form-label">Niveau : Amateur/Professionnel</label>
+        <input type="text" id="inputNiveau" name="niveau" placeholder="Sample : Amateur/Professionnel " required class="form-control {{ violations.niveau is not defined ? '' : 'is-invalid' }}" value="{{ team.niveau }}">
+        {% for violation in violations.niveau %}
+            <div class="invalid-feedback">{{ violation }}</div>
+        {% endfor %}
+    </div>
+
+    <div class="mb-3">
+        <label for="inputPlayersNames" class="form-label">Nom des joueurs</label>
+        <input type="text" id="inputPlayersNames" name="playersNames" placeholder="Sample : Jean,Michel,..." required class="form-control {{ violations.playersNames is not defined ? '' : 'is-invalid' }}" value="{{ tournament.playersNames }}">
+        {% for violation in violations.playersNames %}
+            <div class="invalid-feedback">{{ violation }}</div>
+        {% endfor %}
+    </div>
+
+    <div class="mb-3">
+        <label for="inputTeamImage" class="form-label">Logo de l'équipe</label>
+        <input type="file" id="inputTeamImage" name="teamImage" placeholder="Placez une image ici" class="form-control {{ violations.teamImage is not defined ? '' : 'is-invalid' }}">
+        {% for violation in violations.teamImage %}
+            <div class="invalid-feedback">{{ violation }}</div>
+        {% endfor %}
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

@@ -1,0 +1,45 @@
+<form enctype="multipart/form-data" method="post">
+    <div class="mb-3">
+    <label for="inputParticipant1" class="form-label">Joueur 1 / Équipe 1</label>
+        <select id="inputParticipant1" name="participant1" class="form-control">
+            {% for user in users %}
+                <option value="{{ user.id }}">{{ user.username }}</option>
+            {% endfor %}
+            {% for team in teams %}
+                <option value="{{ team.id }}">{{ team.name }}</option>
+            {% endfor %}    
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="inputParticipant2" class="form-label">Joueur 2 / Équipe 2</label>
+        <select id="inputParticipant2" name="participant2" class="form-control">
+            {% for user in users %}
+                <option value="{{ user.id }}">{{ user.username }}</option>
+            {% endfor %}
+            {% for team in teams %}
+                <option value="{{ team.id }}">{{ team.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+
+    <div class="mb-3">
+        <label for="inputMatchDate" class="form-label">Date de fin</label>
+        <input type="date" id="inputMatchDate" name="matchDate" placeholder="Sample : 09/09/2009 " required class="form-control {{ violations.matchDate is not defined ? '' : 'is-invalid' }}" value="{{ gameMatch.matchDate }}">
+        {% for violation in violations.jeu %}
+            <div class="invalid-feedback">{{ violation }}</div>
+        {% endfor %}
+    </div>
+
+    <div class="mb-3">
+        <label for="inputJeu" class="form-label">Jeu</label>
+        <input type="text" id="inputJeu" name="jeu" placeholder="Sample : interdit de " required class="form-control {{ violations.jeu is not defined ? '' : 'is-invalid' }}" value="{{ gameMatch.jeu }}">
+        {% for violation in violations.jeu %}
+            <div class="invalid-feedback">{{ violation }}</div>
+        {% endfor %}
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
