@@ -7,6 +7,7 @@ use Repository\GameMatchRepository;
 use Symfony\Component\Validator\Constraints as Assert;
 use Entity\User;
 use Entity\Team;
+use DateTime;
 
 
 #[ORM\Entity(repositoryClass: GameMatchRepository::class)]
@@ -75,12 +76,12 @@ class GameMatch
         return $this;
     }
 
-    public function getMatchDate(): ?\DateTime
+    public function getMatchDate(): ?DateTime
     {
         return $this->matchDate;
     }
 
-    public function setMatchDate(?\DateTime $matchDate): GameMatch
+    public function setMatchDate(?DateTime $matchDate): GameMatch
     {
         $this->matchDate = $matchDate;
         return $this;
