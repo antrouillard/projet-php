@@ -8,6 +8,7 @@
  */
 
 use Entity\Team;
+use Entity\User;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,11 +18,23 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 $directory = __DIR__.'/../../public/images';
 
 $TeamRepository = $entityManager->getRepository(Team::class);
+$userRepository = $entityManager->getRepository(User::class);
+$users = $userRepository->findAll();
+$userMaxId = 0;
+
+foreach( $users as $user ){
+    $userId = $user->getId();
+    if ($userId > $userMaxId){
+        $userMaxId = $userId;
+    }
+}
 
 $arrayViolations = [];
 
 if (Request::METHOD_POST == $request->getMethod()) {
+    
     $team = (new Team())
+        
         ->setName($request->get('name'))
         ->setNiveau($request->get('niveau'))
         ->setPlayersNames($request->get('playersNames'));
@@ -42,6 +55,8 @@ if (Request::METHOD_POST == $request->getMethod()) {
     $violations = $validator->validate($team);
 
     if ($violations->count() == 0) {
+        $team->setId($userMaxId+1);
+        echo''.$team->getId().'';
         $entityManager->persist($team);
         $entityManager->flush();
 

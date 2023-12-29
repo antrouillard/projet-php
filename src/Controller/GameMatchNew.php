@@ -25,14 +25,24 @@ $teams = $teamRepository->findAll();
 $arrayViolations = [];
 
 if (Request::METHOD_POST == $request->getMethod()) {
-    $username1 = $request->get('participant1');
-    $username2 = $request->get('participant2');
-    $user1 = $userRepository->findOneBy(['username' => $username1]);
-    $user2 = $userRepository->findOneBy(['username' => $username2]);
-    echo' 1 : '. $user1 .' 2 : '. $user2 .'';
+    $id1 = $request->get('participant1');
+    $id2 = $request->get('participant2');
+
+    $participant1 = $userRepository->findOneBy(['id' => $id1]);
+    if (is_null($participant1)) {
+        $participant1 = $teamRepository->findOneBy(['id'=> $id1]);
+    }
+
+    $participant2 = $userRepository->findOneBy(['id' => $id2]);
+    if (is_null($participant2)) {
+        $participant2 = $teamRepository->findOneBy(['id'=> $id2]);
+    }
+    
+    echo' 1 : '. $id1 .' 2 : '. $id2 .'';
+
     $gameMatch = (new GameMatch())
-        ->setParticipant1($user1)
-        ->setParticipant2($user2)
+        ->setParticipant1($participant1)
+        ->setParticipant2($participant2)
         ->setJeu($request->get('jeu'));
 
         try {
@@ -42,8 +52,7 @@ if (Request::METHOD_POST == $request->getMethod()) {
             $arrayViolations['matchDate'][] = "La date fournie est invalide.";
             return new Response($twig->render('gameMatch/mnew.html.twig', ['violations' => $arrayViolations]));
         }
-    
-        $gameMatch->setMatchDate($matchDate);
+    $gameMatch->setMatchDate($matchDate);
 
     $violations = $validator->validate($gameMatch);
 
