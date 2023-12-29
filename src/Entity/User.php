@@ -8,12 +8,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: 'users')]
-class User
+class User extends Participant
 {
-    #[ORM\Id]
-    #[ORM\Column(type: 'integer')]
-    #[ORM\GeneratedValue]
-    private int|null $id_user = null;
 
     #[ORM\Column(type: 'string')]
     #[Assert\NotBlank]
@@ -34,17 +30,6 @@ class User
         maxMessage: 'Your password cannot be longer than {{ limit }} characters',
     )]
     private string $password;
-
-    public function getId(): ?int
-    {
-        return $this->id_user;
-    }
-
-    public function setId(?int $id_user): User
-    {
-        $this->id_user = $id_user;
-        return $this;
-    }
 
     public function getUsername(): string
     {
