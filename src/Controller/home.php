@@ -47,6 +47,7 @@ foreach ($GameMatchs as $gameMatch) {
 $userdata = [
     'username' => $_SESSION['name'],
     'loggedin' => $_SESSION['loggedin'],
+    'id' => $_SESSION['id'],
 ];
 
 return new Response($twig->render('home/home.html.twig',[

@@ -18,11 +18,12 @@
                     <a class="nav-link" href="/gameMatch/mnew">Créer un match</a>
                 </li>
                 {% if userdata.loggedin %}
-                    <li class="nav-item">
-                        <span class="nav-link">Bienvenue, {{ userdata.username }} !</span>
-                    </li>
+                    <span class="d-inline"><a class="nav-link" href="/user/{{ userdata.id}}">Bienvenue, {{ userdata.username }} !</a></span>
                     <li class="nav-item">
                         <a class="nav-link" href="/logout">Se déconnecter</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/unregister">Se désinscrire</a>
                     </li>
                 {% else %}
                     <li class="nav-item">
@@ -49,7 +50,7 @@
                     <a class="nav-link" href="/gameMatch/mnew">Créer un match</a>
                 </li>
                 {% if userdata.loggedin %}
-                    <span>Bienvenue, {{ userdata.username }} !</span>
+                    <span class="d-inline"><a class="nav-link" href="/user/{{ userdata.id}}">Bienvenue, {{ userdata.username }} !</a></span>
                     <li class="nav-item">
                         <a class="nav-link" href="/logout">Se déconnecter</a>
                     </li>

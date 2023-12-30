@@ -34,9 +34,9 @@ class Tournament
     #[Assert\NotBlank]
     #[Assert\Length(
         min: 2,
-        max: 50,
-        minMessage: 'Your first name must be at least {{ limit }} characters long',
-        maxMessage: 'Your first name cannot be longer than {{ limit }} characters',
+        max: 256,
+        minMessage: 'Your rules must be at least {{ limit }} characters long',
+        maxMessage: 'Your rules cannot be longer than {{ limit }} characters',
     )]
     private string $rules;
 

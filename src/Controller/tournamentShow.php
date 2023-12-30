@@ -38,6 +38,7 @@ if (file_exists($imgPath)) {
 $userdata = [
     'username' => $_SESSION['name'],
     'loggedin' => $_SESSION['loggedin'],
+    'id' => $_SESSION['id'],
 ];
 
 $user = $userRepository->findOneBy(['name' => $userdata['username']]);

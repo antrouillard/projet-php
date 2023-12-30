@@ -9,7 +9,20 @@
 use Entity\User;
 use Symfony\Component\HttpFoundation\Response;
 
-$UserRepository = $entityManager->getRepository(User::class);
-$User = $UserRepository->find($id);
+session_start();
 
-return new Response($twig->render('user/show.html.twig', ['user' => $User]));
+$UserRepository = $entityManager->getRepository(User::class);
+
+$userdata = [
+    'username' => $_SESSION['name'],
+    'loggedin' => $_SESSION['loggedin'],
+    'id' => $_SESSION['id'],
+];
+
+$User = $UserRepository->findOneBy(['name' => $userdata['username']]);
+
+
+return new Response($twig->render('user/show.html.twig', [
+    'user' => $User,
+    'userdata' =>$userdata
+]));

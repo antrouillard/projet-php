@@ -19,6 +19,7 @@ $inscriptionRepository = $entityManager->getRepository(Inscription::class);
 $userdata = [
     'username' => $_SESSION['name'],
     'loggedin' => $_SESSION['loggedin'],
+    'id' => $_SESSION['id'],
 ];
 
 $User = $UserRepository->findOneBy(['name' => $userdata['username']]);

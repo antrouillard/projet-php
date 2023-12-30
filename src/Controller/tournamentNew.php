@@ -75,6 +75,7 @@ if (Request::METHOD_POST == $request->getMethod()) {
 $userdata = [
     'username' => $_SESSION['name'],
     'loggedin' => $_SESSION['loggedin'],
+    'id' => $_SESSION['id'],
 ];
 
 return new Response($twig->render('tournament/tnew.html.twig', [

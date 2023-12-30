@@ -48,6 +48,7 @@ if ($request->isMethod('POST')) {
 $userdata = [
     'username' => $_SESSION['name'],
     'loggedin' => $_SESSION['loggedin'],
+    'id' => $_SESSION['id'],
 ];
 
 return new Response($twig->render('search/search.html.twig', [

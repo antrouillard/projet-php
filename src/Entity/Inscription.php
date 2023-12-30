@@ -24,7 +24,7 @@ class Inscription
     #[Assert\NotBlank]
     #[Assert\Length(
         min: 2,
-        max: 50,
+        max: 100,
         minMessage: 'The email must be at least {{ limit }} characters long',
         maxMessage: 'The email cannot be longer than {{ limit }} characters',
     )]

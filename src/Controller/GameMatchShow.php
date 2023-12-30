@@ -25,6 +25,7 @@ $participant2 = $GameMatch->getParticipant2();
 $userdata = [
     'username' => $_SESSION['name'],
     'loggedin' => $_SESSION['loggedin'],
+    'id' => $_SESSION['id'],
 ];
 
 return new Response($twig->render('gameMatch/mshow.html.twig', [

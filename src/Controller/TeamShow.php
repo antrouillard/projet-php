@@ -35,6 +35,7 @@ else {
 $userdata = [
     'username' => $_SESSION['name'],
     'loggedin' => $_SESSION['loggedin'],
+    'id' => $_SESSION['id'],
 ];
 
 return new Response($twig->render('team/teshow.html.twig', [

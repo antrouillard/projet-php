@@ -21,6 +21,7 @@ $Teams = $TeamRepository->findAll();
 $userdata = [
     'username' => $_SESSION['name'],
     'loggedin' => $_SESSION['loggedin'],
+    'id' => $_SESSION['id'],
 ];
 
 return new Response($twig->render('team/teindex.html.twig', [
