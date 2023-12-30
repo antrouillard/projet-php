@@ -15,6 +15,12 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
+session_start();
+
+if(!isset($_SESSION['loggedin'])){
+    return new RedirectResponse('/login');
+}
+
 $GameMatchRepository = $entityManager->getRepository(GameMatch::class);
 $userRepository = $entityManager->getRepository(User::class);
 $users = $userRepository->findAll();
@@ -60,15 +66,21 @@ if (Request::METHOD_POST == $request->getMethod()) {
         $entityManager->persist($gameMatch);
         $entityManager->flush();
 
-        return new RedirectResponse('/gameMatch');
+        return new RedirectResponse('/');
     }
     foreach ($violations as $violation) {
         $arrayViolations[$violation->getPropertyPath()][] = $violation->getMessage();
     }
 }
 
+$userdata = [
+    'username' => $_SESSION['name'],
+    'loggedin' => $_SESSION['loggedin'],
+];
+
 return new Response($twig->render('gameMatch/mnew.html.twig', [
     'violations' => $arrayViolations,
     'users' => $users,
     'teams' => $teams,
+    'userdata' =>$userdata
 ]));

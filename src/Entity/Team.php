@@ -8,7 +8,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Entity\User; 
 
 #[ORM\Entity(repositoryClass: TeamRepository::class)]
-#[ORM\Table(name: 'teams')]
 
 class Team extends Participant
 {

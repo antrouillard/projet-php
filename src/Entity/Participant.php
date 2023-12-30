@@ -4,7 +4,14 @@ namespace Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\MappedSuperclass]
+#[ORM\Entity]
+#[ORM\InheritanceType("SINGLE_TABLE")]
+#[ORM\DiscriminatorColumn(name : "type", type : "string")]
+#[ORM\DiscriminatorMap([
+    'user' => 'User',
+    'team' => 'Team',
+])]
+#[ORM\Table(name: 'participants')]
 abstract class Participant
 {
     #[ORM\Id]

@@ -28,7 +28,9 @@ $routes->add('logout', new Route('/logout'));
 $routes->add('register', new Route('/register'));
 
 $routes->add('teamNew', new Route('/team/tenew'));
+$routes->add('teamShow', new Route('/team/{id}', [], ['id' => ('\d+')]));
 
 $routes->add('gameMatchNew', new Route('/gameMatch/mnew'));
+$routes->add('gameMatchShow', new Route('/gameMatch/{id}', [], ['id' => ('\d+')]));
 
 return $routes;

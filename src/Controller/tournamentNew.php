@@ -6,6 +6,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
+session_start();
+
+if(!isset($_SESSION['loggedin'])){
+    return new RedirectResponse('/login');
+}
+
 $tournamentRepository = $entityManager->getRepository(Tournament::class);
 
 $arrayViolations = [];
@@ -79,4 +85,7 @@ if (Request::METHOD_POST == $request->getMethod()) {
 }
 
 // Renvoyez la réponse avec le formulaire et les violations
-return new Response($twig->render('tournament/tnew.html.twig', ['violations' => $arrayViolations]));
+return new Response($twig->render('tournament/tnew.html.twig', [
+    'violations' => $arrayViolations,
+    'userdata' =>$userdata
+]));

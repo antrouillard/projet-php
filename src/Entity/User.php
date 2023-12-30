@@ -7,7 +7,6 @@ use Repository\UserRepository;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-#[ORM\Table(name: 'users')]
 class User extends Participant
 {
 
@@ -19,7 +18,7 @@ class User extends Participant
         minMessage: 'Your username must be at least {{ limit }} characters long',
         maxMessage: 'Your username cannot be longer than {{ limit }} characters',
     )]
-    private string $username;
+    private string $name;
 
     #[ORM\Column(type: 'string')]
     #[Assert\NotBlank]
@@ -31,14 +30,14 @@ class User extends Participant
     )]
     private string $password;
 
-    public function getUsername(): string
+    public function getName(): string
     {
-        return $this->username;
+        return $this->name;
     }
 
-    public function setUsername(string $username): User
+    public function setName(string $name): User
     {
-        $this->username = $username;
+        $this->name = $name;
         return $this;
     }
 
@@ -55,7 +54,7 @@ class User extends Participant
 
     public function __toString(): string
     {
-        return sprintf('%s', $this->username);
+        return sprintf('%s', $this->name);
     }
 
 
