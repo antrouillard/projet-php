@@ -40,7 +40,7 @@ $userdata = [
     'loggedin' => $_SESSION['loggedin'],
 ];
 
-$user = $userRepository->findOneBy(['username' => $userdata['username']]);
+$user = $userRepository->findOneBy(['name' => $userdata['username']]);
 
 $UserAlreadyRegistered = false;
 

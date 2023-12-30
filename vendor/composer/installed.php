@@ -3,11 +3,7 @@
         'name' => '__root__',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-<<<<<<< HEAD
-        'reference' => '9ee4a13941dc70fe2338968a9224de01086069a5',
-=======
-        'reference' => '92f8270eb1905c7eb04c3484d6e788ac6de485e4',
->>>>>>> fix-bugs-teams/match
+        'reference' => 'abc9f2710c92e226b10750575ba73dfff8d8fc25',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -17,11 +13,7 @@
         '__root__' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-<<<<<<< HEAD
-            'reference' => '9ee4a13941dc70fe2338968a9224de01086069a5',
-=======
-            'reference' => '92f8270eb1905c7eb04c3484d6e788ac6de485e4',
->>>>>>> fix-bugs-teams/match
+            'reference' => 'abc9f2710c92e226b10750575ba73dfff8d8fc25',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -322,15 +314,9 @@
             'dev_requirement' => false,
         ),
         'symfony/validator' => array(
-<<<<<<< HEAD
             'pretty_version' => 'v6.4.0',
             'version' => '6.4.0.0',
             'reference' => '33e1f3bb76ef70e3170e12f878aefb9c69b0fc4c',
-=======
-            'pretty_version' => 'v7.0.0',
-            'version' => '7.0.0.0',
-            'reference' => '616b39ffb22c1519f7fd2582b8052cde4c2d0b9f',
->>>>>>> fix-bugs-teams/match
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/validator',
             'aliases' => array(),
