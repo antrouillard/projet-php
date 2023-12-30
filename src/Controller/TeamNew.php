@@ -49,12 +49,9 @@ if (Request::METHOD_POST == $request->getMethod()) {
 
     if ($violations->count() == 0) {
         $teamId = $team->getId();
-        $redirectResponse = '/team'.'/'.$teamId;
-        echo $redirectResponse;
         $entityManager->persist($team);
-        $entityManager->flush();
-        echo $redirectResponse;
-        return new RedirectResponse($redirectResponse);
+        $entityManager->flush(); 
+        return new RedirectResponse('/team');
     }
     foreach ($violations as $violation) {
         $arrayViolations[$violation->getPropertyPath()][] = $violation->getMessage();
