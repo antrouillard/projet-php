@@ -5,7 +5,8 @@
 {% block body %}
     <header class="user-header">
             <h1>{{user.name}}</h1>
-            <p>Email de contact : </p>
+            <img src="{{ gravatarUrl }}" alt="Avatar">
+            <p>Email de contact : {{ user.mail }}</p>
     </header>
 
     {% if userdata.loggedin %}

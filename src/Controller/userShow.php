@@ -20,9 +20,12 @@ $userdata = [
 ];
 
 $User = $UserRepository->findOneBy(['name' => $userdata['username']]);
-
+if ($User) {
+    $gravatarUrl = $User->getGravatarUrl();
+}
 
 return new Response($twig->render('user/show.html.twig', [
     'user' => $User,
-    'userdata' =>$userdata
+    'userdata' =>$userdata,
+    'gravatarUrl'=>$gravatarUrl
 ]));

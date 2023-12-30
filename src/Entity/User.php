@@ -25,8 +25,8 @@ class User extends Participant
     #[Assert\Length(
         min: 2,
         max: 50,
-        minMessage: 'Your username must be at least {{ limit }} characters long',
-        maxMessage: 'Your username cannot be longer than {{ limit }} characters',
+        minMessage: 'Your mail must be at least {{ limit }} characters long',
+        maxMessage: 'Your mail cannot be longer than {{ limit }} characters',
     )]
     private string $mail;
 
