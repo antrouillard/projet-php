@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des équipes{% endblock %}
+
+{% block body %}
+    <h1>Liste des équipes inscrites sur le site</h1>
+
+    <h2>Nombre d'équipes - {{ teams|length }}</h2>
+    <div>
+        {% for team in teams %}
+            {% if loop.first %}
+                <ul>
+            {% endif %}
+            <li>
+                <a href="/team/{{ team.id }}">{{ team.id }} - {{ team.name }}</a>
+                <a href="/team/{{ team.id }}/edit"> Modifier </a>
+                <a href="/team/{{ team.id }}/delete"> Supprimer </a>
+            </li>
+            {% if loop.last %}
+                </ul>
+            {% endif %}
+        {% else %}
+            <b>Il n'y a pas d'équipes</b>
+        {% endfor %}
+    </div>
+    <div class="fixed-bottom">
+        <a href="/team/tenew">Créer une autre équipe</a>
+    </div>
+{% endblock %}

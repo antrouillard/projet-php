@@ -64,13 +64,18 @@ if (Request::METHOD_POST == $request->getMethod()) {
         $entityManager->persist($tournament);
         $entityManager->flush();
 
-        return new RedirectResponse('/tournament');
+        return new RedirectResponse('/');
     } else {
         foreach ($violations as $violation) {
             $arrayViolations[$violation->getPropertyPath()][] = $violation->getMessage();
         }
     }
 }
+
+$userdata = [
+    'username' => $_SESSION['name'],
+    'loggedin' => $_SESSION['loggedin'],
+];
 
 return new Response($twig->render('tournament/tnew.html.twig', [
     'violations' => $arrayViolations,

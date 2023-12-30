@@ -53,7 +53,6 @@ if (Request::METHOD_POST == $request->getMethod()) {
         try {
             $matchDate = new \DateTime($request->get('matchDate'));
         } catch (\Exception $e) {
-            // Gérez l'erreur si la date n'est pas valide
             $arrayViolations['matchDate'][] = "La date fournie est invalide.";
             return new Response($twig->render('gameMatch/mnew.html.twig', ['violations' => $arrayViolations]));
         }

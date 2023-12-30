@@ -21,8 +21,6 @@ foreach ($Inscriptions as $inscription) {
     $entityManager->flush();
 }
 
-
-
 $entityManager->remove($Tournament);
 $entityManager->flush();
 
