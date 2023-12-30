@@ -8,6 +8,7 @@ use Entity\Tournament;
 use Entity\GameMatch;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Entity\User;
 
 session_start();
 
@@ -49,13 +50,16 @@ $userdata = [
     'loggedin' => $_SESSION['loggedin'],
     'id' => $_SESSION['id'],
 ];
-
+$userRepository = $entityManager->getRepository(User::class);
+$user = $userRepository->findOneBy(['username'=>$userdata['username']]);
+$gravatarUrl = $user->getGravatarUrl();
 return new Response($twig->render('home/home.html.twig',[
     'imgTab' =>$imgTab,
     'userdata' =>$userdata,
     'tournaments'=>$Tournaments,
     'GameMatchs' => $GameMatchs,
     'array_p1' => $array_p1,
-    'array_p2'=> $array_p2
+    'array_p2'=> $array_p2,
+    'gravatarUrl'=>$gravatarUrl
 ])); 
 

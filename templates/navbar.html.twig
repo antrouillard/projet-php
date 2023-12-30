@@ -51,6 +51,7 @@
                 </li>
                 {% if userdata.loggedin %}
                     <span class="d-inline"><a class="nav-link" href="/user/{{ userdata.id}}">Bienvenue, {{ userdata.username }} !</a></span>
+                    <img src="{{ gravatarUrl }}" alt="Avatar">
                     <li class="nav-item">
                         <a class="nav-link" href="/logout">Se déconnecter</a>
                     </li>
