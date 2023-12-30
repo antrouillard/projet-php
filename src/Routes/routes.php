@@ -7,8 +7,6 @@ $routes = new RouteCollection();
 
 $routes->add('home', new Route('/'));
 
-$routes->add('userIndex', new Route('/user'));
-$routes->add('userNew', new Route('/user/new'));
 $routes->add('userShow', new Route('/user/{id}', [], ['id' => ('\d+')]));
 $routes->add('userEdit', new Route('/user/{id}/edit', [], ['id' => ('\d+')]));
 $routes->add('userDelete', new Route('/user/{id}/delete', [], ['id' => ('\d+')]));
@@ -29,8 +27,10 @@ $routes->add('register', new Route('/register'));
 
 $routes->add('teamNew', new Route('/team/tenew'));
 $routes->add('teamShow', new Route('/team/{id}', [], ['id' => ('\d+')]));
+$routes->add('teamDelete', new Route('/team/{id}/delete', [], ['id' => ('\d+')]));
 
 $routes->add('gameMatchNew', new Route('/gameMatch/mnew'));
 $routes->add('gameMatchShow', new Route('/gameMatch/{id}', [], ['id' => ('\d+')]));
+$routes->add('gameMatchDelete', new Route('/gameMatch/{id}/delete', [], ['id' => ('\d+')]));
 
 return $routes;

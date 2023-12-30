@@ -7,21 +7,38 @@
  */
 
 use Entity\Team;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
+
+session_start();
+
+if(!isset($_SESSION['loggedin'])){
+    return new RedirectResponse('/login');
+}
 
 $teamRepository = $entityManager->getRepository(Team::class);
 $team = $teamRepository->find($id);
 
-$folder = "images/";
-$imgPath = $folder . $team->getImgPath();
-$img = null;
-
-// Vérifier si le fichier existe avant de l'ajouter à $imgTab
-if (file_exists($imgPath)) {
-    $img = "/".$imgPath;
+if ($team == null) {
+    new RedirectResponse('/');
 }
 else {
-    echo 'ALED';
+    $folder = "images/";
+    $imgPath = $folder . $team->getImgPath();
+    $img = null;
+
+    if (file_exists($imgPath)) {
+        $img = "/".$imgPath;
+    }
 }
 
-return new Response($twig->render('team/teshow.html.twig', ['team' => $team,'img' => $img]));
+$userdata = [
+    'username' => $_SESSION['name'],
+    'loggedin' => $_SESSION['loggedin'],
+];
+
+return new Response($twig->render('team/teshow.html.twig', [
+    'team' => $team,
+    'img' => $img,
+    'userdata' =>$userdata
+]));

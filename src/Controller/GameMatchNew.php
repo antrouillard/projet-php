@@ -44,7 +44,6 @@ if (Request::METHOD_POST == $request->getMethod()) {
         $participant2 = $teamRepository->findOneBy(['id'=> $id2]);
     }
     
-    echo' 1 : '. $id1 .' 2 : '. $id2 .'';
 
     $gameMatch = (new GameMatch())
         ->setParticipant1($participant1)

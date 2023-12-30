@@ -1,0 +1,31 @@
+        <div class="container text-center my- 3">
+            <h2 class="font-weight-light">Matchs Récents</h2>
+            <div class="row mx-auto my-auto justify-content-center">
+                <div id="recipeCarousel2" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner" role="listbox">
+                        {% for GameMatch in GameMatchs %}
+                            <div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
+                                <div class="col-md-3">
+                                    <div class="card">
+                                        <div class="card-body text-center">
+                                            <h3 class="card-text"><a href="/gameMatch/{{ GameMatch.id }}">
+                                                {{array_p1[loop.index - 1].name}}<br>
+                                                VS<br>
+                                                {{array_p2[loop.index - 1].name}}<br>
+                                            </a></h3>
+                                            <p class="card-info-details">Le {{GameMatch.matchDate|date('Y-m-d')}}<br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel2" role="button" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    </a>
+                    <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel2" role="button" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    </a>
+                </div>
+            </div>
+        </div>

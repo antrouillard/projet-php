@@ -1,13 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ team.name }}{% endblock %}
+{% block title %}Match n°{{ GameMatch.id }}{% endblock %}
 
 {% block body %}
-    <section class="team-details">
-        <header class="team-header">
+    <section class="gameMatch-details">
+        <header class="gameMatch-header">
             <h1>Match de {{ GameMatch.jeu}} </h1>
             <h2>Opposant : <var>{{participant1.name}}</var> à <var>{{participant2.name}}</var></p>
-            <p>Le match sera joué le : <var>{{gameMatch.matchDate|date('Y-m-d')}}</var></p>
+            <p>Le match sera joué le : <var>{{GameMatch.matchDate|date('Y-m-d')}}</var></p>
         </header>
+    </section>
+
+    <section class="gameMatch-delete">
+        <p>Si vous souhaitez supprimer ce match, cliquez <a href="/gameMatch/{{GameMatch.id}}/delete">ici</a></p>
     </section>
 {% endblock %}

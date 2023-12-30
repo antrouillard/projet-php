@@ -38,13 +38,10 @@ if (Request::METHOD_POST == $request->getMethod()) {
         $uploadedFile = $request->files->get('teamImage');
 
     if ($uploadedFile instanceof UploadedFile) {
-        // Générez un nom de fichier unique
         $newFileName = md5(uniqid()) . '.' . $uploadedFile->getClientOriginalExtension();
 
-        // Déplacez le fichier téléchargé vers le répertoire approprié (à ajuster selon vos besoins)
         $uploadedFile->move($directory, $newFileName);
 
-        // Mettez à jour le champ imgPath de l'entité Team
         $team->setImgPath($newFileName);
     }
 

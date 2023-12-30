@@ -5,6 +5,7 @@
  */
 
 use Entity\Tournament;
+use Entity\GameMatch;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -17,18 +18,30 @@ if(!isset($_SESSION['loggedin'])){
 $folder = "images/";
 
 $imgTab = array();
+$array_p1 = array();
+$array_p2 = array();
  
 $TournamentRepository = $entityManager->getRepository(Tournament::class);
+$GameMatchRepository = $entityManager->getRepository(GameMatch::class);
+
 $Tournaments = $TournamentRepository->findAll();
+$GameMatchs = $GameMatchRepository->findAll();
+
 
 foreach ($Tournaments as $tournament) {
-    // Construire le chemin complet pour chaque image
     $imgPath = $folder . $tournament->getImgPath();
     
-    // Vérifier si le fichier existe avant de l'ajouter à $imgTab
     if (file_exists($imgPath)) {
         $imgTab[] = $imgPath;
     }
+}
+
+foreach ($GameMatchs as $gameMatch) {
+    $participant1 = $gameMatch->getParticipant1();
+    $participant2 = $gameMatch->getParticipant2();
+
+    $array_p1[] = $participant1;
+    $array_p2[] = $participant2;
 }
 
 $userdata = [
@@ -39,6 +52,9 @@ $userdata = [
 return new Response($twig->render('home/home.html.twig',[
     'imgTab' =>$imgTab,
     'userdata' =>$userdata,
-    'tournaments'=>$Tournaments
-]));
+    'tournaments'=>$Tournaments,
+    'GameMatchs' => $GameMatchs,
+    'array_p1' => $array_p1,
+    'array_p2'=> $array_p2
+])); 
 

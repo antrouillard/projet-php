@@ -1,7 +1,7 @@
         <div class="container text-center my- 3">
             <h2 class="font-weight-light">Tournois Récents</h2>
             <div class="row mx-auto my-auto justify-content-center">
-                <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div id="recipeCarousel1" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner" role="listbox">
                         {% for tournament in tournaments %}
                             <div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
@@ -11,13 +11,11 @@
                                             {% if loop.index <= imgTab|length %}
                                                 <a href="/tournament/{{ tournament.id }}"><img src="{{ imgTab[loop.index - 1] }}" alt="Tournament Image"></a>
                                             {% else %}
-                                                <!-- Fournir une image par défaut si nécessaire -->
                                                 <img src="{{ imgTab[0] }}" alt="Image par défaut">
                                             {% endif %}
                                         </div>
                                         <div class="card-body text-center">
                                             <h3 class="card-text">{{tournament.name}}</h3>
-                                            <!--<p class="card-info">Thème / Sport / Jeu</p>-->
                                             <p class="card-info-details">Du {{tournament.startDate|date('Y-m-d')}} au {{tournament.endDate|date('Y-m-d')}}<br>
                                             {{tournament.adress}}<br>
                                             {{tournament.nbslots}} places</p>
@@ -27,10 +25,10 @@
                             </div>
                         {% endfor %}
                     </div>
-                    <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
+                    <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel1" role="button" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     </a>
-                    <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">
+                    <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel1" role="button" data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     </a>
                 </div>

@@ -98,15 +98,6 @@ class GameMatch
         return $this;
     }
 
-    /*public function getParticipant1Id(): ?int
-    {
-        return $this->participant1->getId();
-    }
-
-    public function getParticipant2Id(): ?int
-    {   
-        return $this->participant2->getId();
-    }*/
 
    /* public function __toString(): string
     {
