@@ -14,6 +14,13 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
+session_start();
+
+if(!isset($_SESSION['loggedin'])){
+    return new RedirectResponse('/login');
+}
+
+
 $directory = __DIR__.'/../../public/images';
 
 $TeamRepository = $entityManager->getRepository(Team::class);
@@ -57,4 +64,12 @@ if (Request::METHOD_POST == $request->getMethod()) {
     }
 }
 
-return new Response($twig->render('team/tenew.html.twig', ['violations' => $arrayViolations]));
+$userdata = [
+    'username' => $_SESSION['name'],
+    'loggedin' => $_SESSION['loggedin'],
+];
+
+return new Response($twig->render('team/tenew.html.twig', [
+    'violations' => $arrayViolations,
+    'userdata' =>$userdata,
+]));

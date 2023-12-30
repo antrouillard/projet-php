@@ -5,6 +5,13 @@
 use Entity\Tournament;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+
+session_start();
+
+if(!isset($_SESSION['loggedin'])){
+    return new RedirectResponse('/login');
+}
 
 $folder = "images/";
 
@@ -38,7 +45,13 @@ if ($request->isMethod('POST')) {
     $Tournaments = $qb->getQuery()->getResult();
 }
 
+$userdata = [
+    'username' => $_SESSION['name'],
+    'loggedin' => $_SESSION['loggedin'],
+];
+
 return new Response($twig->render('search/search.html.twig', [
     'tournaments' => $Tournaments,
+    'userdata' =>$userdata,
 ]));
 

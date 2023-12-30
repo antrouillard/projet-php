@@ -15,28 +15,18 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 $userRepository = $entityManager->getRepository(User::class);
-$teamRepository = $entityManager->getRepository(Team::class);
-$teams = $teamRepository->findAll();
-$teamMaxId = 0;
 
-foreach( $teams as $team ){
-    $teamId = $team->getId();
-    if ($teamId > $teamMaxId){
-        $teamMaxId = $teamId;
-    }
-}
 
 $arrayViolations = [];
 
 if (Request::METHOD_POST == $request->getMethod()) {
     $user = (new User())
-        ->setUsername($request->get('username'))
+        ->setName($request->get('username'))
         ->setPassword(password_hash($request->get('password'), PASSWORD_DEFAULT));
 
     $violations = $validator->validate($user);
 
     if ($violations->count() == 0) {
-        $user->setId($teamMaxId+1);
         $entityManager->persist($user);
         $entityManager->flush();
 

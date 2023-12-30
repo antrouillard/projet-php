@@ -24,7 +24,7 @@ if ($request->isMethod('POST')) {
     $username = $request->get('username');
     $password = $request->get('password');
 
-    $user = $userRepository->findOneBy(['username' => $username]);
+    $user = $userRepository->findOneBy(['name' => $username]);
 
     if ($user && password_verify($password, $user->getPassword())) {
         if (session_status() === PHP_SESSION_ACTIVE) {

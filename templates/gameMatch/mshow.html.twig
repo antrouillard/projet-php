@@ -5,9 +5,9 @@
 {% block body %}
     <section class="team-details">
         <header class="team-header">
-            <h1>Match de {{ gameMatch.jeu}} </h1>
-            <h2>Opposant : <var>{{nameParticipant1}}</var> à <var>{{nameParticipant2}}</var></p>
-            <p>Le match sera joué le : <var>{{gameMatch.matchDate|date('Y-m-d') }}</var></p>
+            <h1>Match de {{ GameMatch.jeu}} </h1>
+            <h2>Opposant : <var>{{participant1.name}}</var> à <var>{{participant2.name}}</var></p>
+            <p>Le match sera joué le : <var>{{gameMatch.matchDate|date('Y-m-d')}}</var></p>
         </header>
     </section>
 {% endblock %}

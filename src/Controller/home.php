@@ -36,5 +36,9 @@ $userdata = [
     'loggedin' => $_SESSION['loggedin'],
 ];
 
-return new Response($twig->render('home/home.html.twig',['imgTab' =>$imgTab,'userdata' =>$userdata,'tournaments'=>$Tournaments]));
+return new Response($twig->render('home/home.html.twig',[
+    'imgTab' =>$imgTab,
+    'userdata' =>$userdata,
+    'tournaments'=>$Tournaments
+]));
 
