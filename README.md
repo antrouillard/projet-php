@@ -11,7 +11,10 @@ En cas de problème d'ouverture du site via docker, nous avons envoyé le projet
 En cas de problème avec la base de données : 
 1. php binary/doctrine.php :schema:drop --full-database --force  
 2. php binary/doctrine.php orm:schema-tool:update --force --dump-sql
-3. php -S localhost:3000 -t public 
+3. php -S localhost:3000 -t public
+
+Pour executer les tests PHPUnit, créés dans le fichier TestExample.php, executez la commande : 
+./vendor/bin/phpunit --configuration phpunit.xml
 
 Si vous rencontrez un problème persistant, n'hésitez pas à nous contacter
 
