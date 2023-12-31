@@ -34,7 +34,7 @@
 
     <div class="mb-3">
         <label for="inputJeu" class="form-label">Jeu</label>
-        <input type="text" id="inputJeu" name="jeu" placeholder="Sample : interdit de " required class="form-control {{ violations.jeu is not defined ? '' : 'is-invalid' }}" value="{{ gameMatch.jeu }}">
+        <input type="text" id="inputJeu" name="jeu" placeholder="Sample : Mario Kart " required class="form-control {{ violations.jeu is not defined ? '' : 'is-invalid' }}" value="{{ gameMatch.jeu }}">
         {% for violation in violations.jeu %}
             <div class="invalid-feedback">{{ violation }}</div>
         {% endfor %}

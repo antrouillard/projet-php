@@ -1,7 +1,7 @@
 <form enctype="multipart/form-data" method="post">
     <div class="mb-3">
         <label for="inputName" class="form-label">Nom du tournoi</label>
-        <input type="text" id="inputName" name="name" placeholder="Sample : Cauchois" required class="form-control {{ violations.name is not defined ? '' : 'is-invalid' }}" value="{{ tournament.name }}">
+        <input type="text" id="inputName" name="name" placeholder="Sample : Tournoi INSA Hdf" required class="form-control {{ violations.name is not defined ? '' : 'is-invalid' }}" value="{{ tournament.name }}">
         {% for violation in violations.name %}
             <div class="invalid-feedback">{{ violation }}</div>
         {% endfor %}
@@ -16,7 +16,7 @@
 
     <div class="mb-3">
         <label for="inputRules" class="form-label">Règles</label>
-        <input type="text" id="inputRules" name="rules" placeholder="Sample : interdit de " required class="form-control {{ violations.rules is not defined ? '' : 'is-invalid' }}" value="{{ tournament.rules }}">
+        <input type="text" id="inputRules" name="rules" placeholder="Sample : interdit de ... " required class="form-control {{ violations.rules is not defined ? '' : 'is-invalid' }}" value="{{ tournament.rules }}">
         {% for violation in violations.rules %}
             <div class="invalid-feedback">{{ violation }}</div>
         {% endfor %}
