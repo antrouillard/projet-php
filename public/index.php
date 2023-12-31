@@ -11,6 +11,8 @@ use Twig\Loader\FilesystemLoader;
 
 require_once dirname(__DIR__) . '/vendor/autoload.php';
 
+
+
 $request = Request::createFromGlobals();
 
 $routes = require_once dirname(__DIR__) . '/src/Routes/routes.php';
@@ -21,11 +23,16 @@ $context->fromRequest($request);
 $urlMatcher = new UrlMatcher($routes, $context);
 
 $loader = new FilesystemLoader(dirname(__DIR__) . '/templates');
+
+
+
 $twig = new Environment($loader, [
     'cache' => false,
 ]);
 
 $entityManager = require_once dirname(__DIR__) . '/config/database.php';
+
+
 
 $validator = Validation::createValidatorBuilder()
     ->enableAnnotationMapping()
@@ -35,6 +42,7 @@ try {
     extract($urlMatcher->match($request->getPathInfo()));
 
     $response = require dirname(__DIR__) . '/src/Controller/' . $_route . '.php';
+
 } catch (ResourceNotFoundException $exception) {
     $response = new Response('The requested page doesn\'t exist', Response::HTTP_NOT_FOUND);
 } /*catch (Throwable $throwable) {
