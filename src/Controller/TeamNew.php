@@ -8,6 +8,7 @@
  */
 
 use Entity\Team;
+use Entity\User;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -63,8 +64,14 @@ $userdata = [
     'loggedin' => $_SESSION['loggedin'],
     'id' => $_SESSION['id'],
 ];
+$userRepository = $entityManager->getRepository(User::class);
+$user = $userRepository->findOneBy(['name'=>$userdata['username']]);
+if ($user) {
+    $gravatarUrl = $user->getGravatarUrl();
+}
 
 return new Response($twig->render('team/tenew.html.twig', [
     'violations' => $arrayViolations,
     'userdata' =>$userdata,
+    'gravatarUrl'=>$gravatarUrl
 ]));

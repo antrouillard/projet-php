@@ -15,7 +15,7 @@
     </div>
     <div class="mb-3">
         <label for="inputPassword" class="form-label">Mot de passe</label>
-        <input type="text" id="inputPassword" name="password" placeholder="Sample : 12345678" required class="form-control {{ violations.firstname is not defined ? '' : 'is-invalid' }}" value="{{ user.password }}">
+        <input type="password" id="inputPassword" name="password" placeholder="Sample : 12345678" required class="form-control {{ violations.firstname is not defined ? '' : 'is-invalid' }}" value="{{ user.password }}">
         {% for violation in violations.password %}
             <div class="invalid-feedback">{{ violation }}</div>
         {% endfor %}

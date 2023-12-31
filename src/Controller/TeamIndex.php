@@ -6,6 +6,7 @@
  */
 
 use Entity\Team;
+use Entity\User;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
@@ -23,8 +24,14 @@ $userdata = [
     'loggedin' => $_SESSION['loggedin'],
     'id' => $_SESSION['id'],
 ];
+$userRepository = $entityManager->getRepository(User::class);
+$user = $userRepository->findOneBy(['name'=>$userdata['username']]);
+if ($user) {
+    $gravatarUrl = $user->getGravatarUrl();
+}
 
 return new Response($twig->render('team/teindex.html.twig', [
     'teams' => $Teams,
-    'userdata' =>$userdata
+    'userdata' =>$userdata,
+    'gravatarUrl'=>$gravatarUrl
 ]));

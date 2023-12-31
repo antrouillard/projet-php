@@ -76,10 +76,16 @@ $userdata = [
     'loggedin' => $_SESSION['loggedin'],
     'id' => $_SESSION['id'],
 ];
+$userRepository = $entityManager->getRepository(User::class);
+$user = $userRepository->findOneBy(['name'=>$userdata['username']]);
+if ($user) {
+    $gravatarUrl = $user->getGravatarUrl();
+}
 
 return new Response($twig->render('gameMatch/mnew.html.twig', [
     'violations' => $arrayViolations,
     'users' => $users,
     'teams' => $teams,
-    'userdata' =>$userdata
+    'userdata' =>$userdata,
+    'gravatarUrl'=> $gravatarUrl
 ]));

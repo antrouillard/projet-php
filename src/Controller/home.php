@@ -55,6 +55,7 @@ $user = $userRepository->findOneBy(['name'=>$userdata['username']]);
 if ($user) {
     $gravatarUrl = $user->getGravatarUrl();
 }
+
 return new Response($twig->render('home/home.html.twig',[
     'imgTab' =>$imgTab,
     'userdata' =>$userdata,

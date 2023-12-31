@@ -79,7 +79,11 @@ if (Request::METHOD_POST == $request->getMethod()) {
         $arrayViolations[$violation->getPropertyPath()][] = $violation->getMessage();
     }
 }
-
+$userRepository = $entityManager->getRepository(User::class);
+$user = $userRepository->findOneBy(['name'=>$userdata['username']]);
+if ($user) {
+    $gravatarUrl = $user->getGravatarUrl();
+}
 
 return new Response($twig->render('tournament/tshow.html.twig', [
     'tournament' => $tournament,
@@ -87,4 +91,5 @@ return new Response($twig->render('tournament/tshow.html.twig', [
     'userdata' => $userdata,
     'violations' => $arrayViolations,
     'UserAlreadyRegistered' => $UserAlreadyRegistered,
+    'gravatarUrl'=>$gravatarUrl
 ]));
