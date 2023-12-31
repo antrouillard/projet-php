@@ -14,3 +14,5 @@ En cas de problème avec la base de données :
 3. php -S localhost:3000 -t public 
 
 Si vous rencontrez un problème persistant, n'hésitez pas à nous contacter
+
+La documentation se trouve dans le document Description Projet TechnoWEB ROUILLARD_VAULEY.pdf
